@@ -9,13 +9,12 @@
 HeartRate
 }
 \description{
-A dataset containing heart-rate recorded duing a run.
+A dataset containing heart-rate recorded during a run.
+}
+\references{
+\insertRef{Haynes2017}{changepoint.np}
 }
 \author{
 Kaylea Haynes
 }
-\references{
-For details see: Haynes K, Fearnhead P, Eckley I A (2016) A computationally efficient nonparametric approach for changepoint detection, Statistics and Computed (accepted)
-}
 \keyword{datasets}
-

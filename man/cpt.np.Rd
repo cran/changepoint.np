@@ -32,8 +32,8 @@ If data is a vector (single dataset) then a vector/list is returned depending on
 
 If method is PELT then a vector is returned containing the changepoint locations for the penalty supplied. If the penalty is CROPS then a list is returned with the elements:
 
-\item{cpt.out}{A data frame containing the value of the penalty value where the number of segmentations chages, the number of segmentations and the value of the cost at that penalty value.}
-\item{changepoints}{The optimal changepoints for the different penalty values startings with the lowest penalty value.}
+\item{cpt.out}{A data frame containing the value of the penalty value where the number of segmentations changes, the number of segmentations and the value of the cost at that penalty value.}
+\item{changepoints}{The optimal changepoints for the different penalty values starting with the lowest penalty value.}
 }
 \description{
 Calculates the optimal positioning and number of changepoints for data given a user specified cost function and penalty.
@@ -42,6 +42,7 @@ Calculates the optimal positioning and number of changepoints for data given a u
 This function is used to find multiple changes in a data set using the changepoint algorithm PELT with a nonparametric cost function based on the empirical distribution.  A changepoint is denoted as the first observation of the new segment.
 }
 \examples{
+
 #Example of a data set of length 1000 with changes in location
 #(model 1 of Haynes, K et al. (2016)) with the empirical distribution cost function.
 
@@ -62,29 +63,33 @@ for (i in 1:n){
 }
 
 out <- cpt.np(data, penalty = "SIC",method="PELT",test.stat="empirical_distribution",
-             class=TRUE,minseglen=2, nquantiles =4*log(length(data)))
+              class=TRUE,minseglen=2, nquantiles =4*log(length(data)))
 cpts(out)
-
 #returns 100 130 150 230 250 400 440 650 760 780 810 as the changepoint locations.
-
+plot(out)
+\donttest{
 #Example 2 uses the heart rate data . 
 
-cptHeartRate <- cpt.np(HeartRate, penalty = "CROPS", pen.value = c(5,200), method="PELT",
- test.stat="empirical_distribution",class=TRUE,minseglen=2, nquantiles =4*log(length(HeartRate)))
+data(HeartRate)
+cptHeartRate <- cpt.np(HeartRate, penalty = "CROPS", pen.value = c(5,200), 
+                       method="PELT", test.stat="empirical_distribution",
+                       class=TRUE,minseglen=2, 
+                       nquantiles =4*log(length(HeartRate)))
 plot(cptHeartRate, diagnostic = TRUE)
 plot(cptHeartRate, ncpts = 11)
 }
-\author{
-Kaylea Haynes
+
 }
 \references{
-PELT with an Empirical Distribution cost function: Haynes K, Fearnhead P, Eckley I A (2016) A computationally efficient nonparametric approach for changepoint detection, Statistics and Computed (accepted)
+\insertRef{Haynes2017}{changepoint.np}
 
-PELT Algorithm: Killick R, Fearnhead P, Eckley I A (2012) Optimal detection of changepoints with a linear computational cost, \emph{JASA 107(500), 1590-1598}
+\insertRef{Killick2012}{changepoint.np}
 
-CROPS: Haynes K, Eckley I A, Fearnhead P (2015) Computationally Efficient Changepoint Detection for a Range of Penalties, \emph{JCGS, To Appear}
+\insertRef{Haynes2015}{changepoint.np}
 }
 \seealso{
 PELT in parametric settings: \code{\link[changepoint]{cpt.mean}} for changes in the mean, \code{\link[changepoint]{cpt.var}} for changes in the variance and \code{\link[changepoint]{cpt.meanvar}} for changes in the mean and variance.
 }
-
+\author{
+Kaylea Haynes
+}
