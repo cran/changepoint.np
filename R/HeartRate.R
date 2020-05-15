@@ -4,6 +4,8 @@
 #'
 #' @format A vector of recorded heart rates at points over time with 1160 data points. 
 #' 
+#' @usage data(HeartRate)
+#'
 #' @author Kaylea Haynes
 #' @references \insertRef{Haynes2017}{changepoint.np}
 "HeartRate"

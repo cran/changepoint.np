@@ -1,7 +1,7 @@
-51d6488380fa791dc4e945ffda5578f3 *DESCRIPTION
+3df72117b64df0dcc385a41de82a61b6 *DESCRIPTION
 2184a1e9dce56d044c8c50efdad0412e *NAMESPACE
 b17b5e8ea432f09c8c3ca8b878d26ec9 *R/CROPS.R
-2029b930fb86ea09cfc6b25d1a3d132b *R/HeartRate.R
+71adb1372fd51772c38c33506d59f248 *R/HeartRate.R
 5159b942b56d3eb64999fdcbd9ff9ad7 *R/NPPELT.R
 ee8eea388710be6ba456416050023e50 *R/PELT.R
 26e9b552db59ba4f9ce77963c313cd7e *R/class_input.R
@@ -11,11 +11,11 @@ dff23ec52b97497dc9400c1ce0265e33 *R/data_input.R
 c465f63385d95197faff661a158c5674 *R/multiple_nonparametric.R
 0e550b116f5c00663bc7451a341c481f *R/penalty_decision.R
 b9a111d79da84cb9e665220bf68a1c36 *R/range_of_penalties.R
-b6ad73c4e65a9416343c48602d9a4767 *build/partial.rdb
+b3c0865d6eeddd26e183348db37a10f8 *build/partial.rdb
 476c7de06816a7a2d30ba85585e38141 *data/HeartRate.RData
 f0a1afffbfadcc0d73303801f88b02f3 *inst/REFERENCES.bib
-2d66437f3c5a3d720f6d6eed8259de5b *man/HeartRate.Rd
-6375fea79c118b24d74f2f42546b52ef *man/cpt.np.Rd
+eeebbe08d797a02acc6795613738ff6a *man/HeartRate.Rd
+51d130692994dd8b841f26642c7aa5f0 *man/cpt.np.Rd
 d2931bcfb9a2735dae4b9caf6c481011 *src/NPPELT.c
 5c800252883c6d54d17d31dc479d77a9 *src/changepoint.np_init.c
-c0a257b1a0357561580d2e5ce82094fa *src/costfunctions.c
+eb8bfab634b2ea7c460faacac94e35bc *src/costfunctions.c

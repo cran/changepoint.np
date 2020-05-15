@@ -6,7 +6,7 @@
 \title{Recorded heart rate during a run}
 \format{A vector of recorded heart rates at points over time with 1160 data points.}
 \usage{
-HeartRate
+data(HeartRate)
 }
 \description{
 A dataset containing heart-rate recorded during a run.

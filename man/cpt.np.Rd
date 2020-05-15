@@ -4,9 +4,16 @@
 \alias{cpt.np}
 \title{Identifying Changes using a Nonparametric Cost Function}
 \usage{
-cpt.np(data, penalty = "MBIC", pen.value = 0, method = "PELT",
-  test.stat = "empirical_distribution", class = TRUE, minseglen = 1,
-  nquantiles = 10)
+cpt.np(
+  data,
+  penalty = "MBIC",
+  pen.value = 0,
+  method = "PELT",
+  test.stat = "empirical_distribution",
+  class = TRUE,
+  minseglen = 1,
+  nquantiles = 10
+)
 }
 \arguments{
 \item{data}{A vector, ts object or matrix containing the data within which you wish to find a changepoint.  If the data is a matrix, each row is considered as a separate dataset.}

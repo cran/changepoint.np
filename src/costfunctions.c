@@ -29,9 +29,9 @@ double mll_nonparametric_ed(double sumstatout[], int tstar, int checklist, int *
     if(!isnan(temp_cost)){
       cost = cost + temp_cost;
     }
-    else{
-      cost = cost;
-    }
+    //else{
+    //  cost = cost;
+    //}
   }
   cost = -2*(log(2**n-1))*cost/(*nquantiles);
   return(cost);
@@ -53,9 +53,9 @@ double mll_nonparametric_ed_mbic(double sumstatout[], int tstar, int checklist, 
     if(!isnan(temp_cost)){
       cost = cost + temp_cost;
     }
-    else{
-      cost = cost;
-    }
+    //else{
+    //  cost = cost;
+    //}
   }
   cost = -2*(log(2**n-1))*cost/(*nquantiles);
   return(cost);
