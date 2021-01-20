@@ -9,6 +9,7 @@
 #' @param class Logical. If TRUE then an object of class cpt is returned.
 #' @param minseglen Positive integer giving the minimum segment length (number of observations between changes), default is the minimum allowed by theory.
 #' @param nquantiles The number of quantiles to calculate when test.stat = "empirical_distribution".
+#' @param verbose Logical value. If TRUE then progress will be reported when penalty=CROPS. Default value is TRUE.
 #'
 #' @details This function is used to find multiple changes in a data set using the changepoint algorithm PELT with a nonparametric cost function based on the empirical distribution.  A changepoint is denoted as the first observation of the new segment.
 #' @return  If \code{class=TRUE} then an object of S4 class "cpt" is returned.  The slot \code{cpts} contains the changepoints that are returned.  For \code{class=FALSE} the structure is as follows.
@@ -74,7 +75,7 @@
 #' @importFrom utils packageVersion
 #' @export
 
-cpt.np=function(data,penalty="MBIC",pen.value=0,method="PELT",test.stat="empirical_distribution",class=TRUE,minseglen=1, nquantiles = 10){
+cpt.np=function(data,penalty="MBIC",pen.value=0,method="PELT",test.stat="empirical_distribution",class=TRUE,minseglen=1, nquantiles = 10, verbose = TRUE){
   # checkData(data)
   if(minseglen<1){minseglen=1;warning('Minimum segment length cannot be less than 1, automatically changed to be 1.')}
   if((method == "PELT")&&(test.stat!="empirical_distribution")){ stop("Invalid test statistic, must be empirical_distribution")}
@@ -86,7 +87,7 @@ cpt.np=function(data,penalty="MBIC",pen.value=0,method="PELT",test.stat="empiric
           pen.value = rev(pen.value)
         }
         #run range of penalties
-        return(CROPS(data=data, method=method, pen.value=pen.value, test.stat=test.stat, class=class, minseglen=minseglen, nquantiles=nquantiles, func="nonparametric"))
+        return(CROPS(data=data, method=method, pen.value=pen.value, test.stat=test.stat, class=class, minseglen=minseglen, nquantiles=nquantiles, func="nonparametric",verbose=verbose))
       }else{
         stop('The length of pen.value must be 2')
       }

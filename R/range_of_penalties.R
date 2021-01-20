@@ -1,6 +1,6 @@
 ######## Function to run PELT for a Range Of Penalty values.  ############
 
-range_of_penalties <- function(sumstat,cost = "empirical_distribution",PELT = T,min_pen=log(length(sumstat)/3-1),max_pen=10*log(length(sumstat)/3-1),minseglen, nquantiles) {
+range_of_penalties <- function(sumstat,cost = "empirical_distribution",PELT = T,min_pen=log(length(sumstat)/3-1),max_pen=10*log(length(sumstat)/3-1),minseglen, nquantiles,verbose) {
 
   NCALC=0
   pen_interval <- c(min_pen,max_pen)
@@ -33,14 +33,20 @@ range_of_penalties <- function(sumstat,cost = "empirical_distribution",PELT = T,
     }
 
     if (count == 0){
-      print(paste("Maximum number of runs of algorithm = ", new_numcpts[1] - new_numcpts[2] + 2, sep = ""))
-      count <- count + length(new_numcpts)
-      print(paste("Completed runs = ", count, sep = ""))
+      count <- count + length(new_numcpts)	
+      if(verbose == TRUE)
+      {
+         print(paste("Maximum number of runs of algorithm = ", new_numcpts[1] - new_numcpts[2] + 2, sep = ""))
+	 print(paste("Completed runs = ", count, sep = ""))	      
+      }
     }
 
     else{
       count <- count + length(new_numcpts)
-      print(paste("Completed runs = ", count, sep = ""))
+      if(verbose == TRUE)
+      {
+         print(paste("Completed runs = ", count, sep = ""))
+      }
     }
 
 

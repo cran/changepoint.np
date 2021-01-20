@@ -4,7 +4,9 @@
 \name{HeartRate}
 \alias{HeartRate}
 \title{Recorded heart rate during a run}
-\format{A vector of recorded heart rates at points over time with 1160 data points.}
+\format{
+A vector of recorded heart rates at points over time with 1160 data points.
+}
 \usage{
 data(HeartRate)
 }

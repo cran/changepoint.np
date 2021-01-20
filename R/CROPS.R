@@ -1,4 +1,4 @@
-CROPS <- function(data, penalty="CROPS", pen.value, method="PELT", test.stat="empirical_distribution", class=TRUE, param.est=TRUE, minseglen, nquantiles, func){
+CROPS <- function(data, penalty="CROPS", pen.value, method="PELT", test.stat="empirical_distribution", class=TRUE, param.est=TRUE, minseglen, nquantiles, func,verbose){
   if(method != "PELT"){stop('CROPS is a valid penalty choice only if method="PELT", please change your method or your penalty.')}
   if (test.stat == "empirical_distribution"){
     nonparametric.ed.sumstat = function(data,K=nquantiles){ # This now takes into account the integral transformation
@@ -25,7 +25,7 @@ CROPS <- function(data, penalty="CROPS", pen.value, method="PELT", test.stat="em
   )
   costfunc = paste0(func, ".", stat)
 
-  out = range_of_penalties(sumstat, cost=costfunc, min_pen=pen.value[1], max_pen=pen.value[2], minseglen=minseglen, nquantiles = nquantiles)
+  out = range_of_penalties(sumstat, cost=costfunc, min_pen=pen.value[1], max_pen=pen.value[2], minseglen=minseglen, nquantiles = nquantiles,verbose = verbose)
 
   if(func=="nonparametric"){
     cpttype="nonparametric"

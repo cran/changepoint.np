@@ -12,7 +12,8 @@ cpt.np(
   test.stat = "empirical_distribution",
   class = TRUE,
   minseglen = 1,
-  nquantiles = 10
+  nquantiles = 10,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ cpt.np(
 \item{minseglen}{Positive integer giving the minimum segment length (number of observations between changes), default is the minimum allowed by theory.}
 
 \item{nquantiles}{The number of quantiles to calculate when test.stat = "empirical_distribution".}
+
+\item{verbose}{Logical value. If TRUE then progress will be reported when penalty=CROPS. Default value is TRUE.}
 }
 \value{
 If \code{class=TRUE} then an object of S4 class "cpt" is returned.  The slot \code{cpts} contains the changepoints that are returned.  For \code{class=FALSE} the structure is as follows.
