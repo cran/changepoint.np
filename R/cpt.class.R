@@ -527,10 +527,12 @@ setMethod("param", "cpt.range", function(object,ncpts=NA,shape,...) {
   }
   else{
     ncpts.full=apply(cpts.full(object),1,function(x){sum(x>0,na.rm=TRUE)})
-    row=try(which(ncpts.full==ncpts),silent=TRUE)
-    if(class(row)=='try-error'){
-      stop("Your input object doesn't have a segmentation with the requested number of changepoints.")
-    }
+    tryCatch(
+    {
+	row<-which(ncpts.full==ncpts)
+    },
+    error = function(e) stop("Your input object doesn't have a segmentation with the requested number of changepoints.")
+    )
     cpts=c(0,cpts.full(object)[row,1:ncpts],length(data.set(object)))
   }
   

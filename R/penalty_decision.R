@@ -27,14 +27,17 @@ penalty_decision = function(penalty, pen.value, n, diffparam, method){
   else if((penalty!="Manual")&&(penalty!="Asymptotic")){
     stop('Unknown Penalty')
   }
+
+
   if((penalty=="Manual")&&(is.numeric(pen.value)==FALSE)){
-    pen.value=try(eval(parse(text=paste(pen.value))),silent=TRUE)
-    if(class(pen.value)=='try-error'){
-      stop('Your manual penalty cannot be evaluated')
-    }else{
+      tryCatch(
+      {
+         pen.value <- eval(parse(text=paste(pen.value)))  
+      }, error = function(e) stop('Your manual penalty cannot be evaluated')
+      )
       pen.return=pen.value
     }
-  }
+
 
   if((penalty=="Manual")&&(is.numeric(pen.value)==TRUE)){
     pen.return=pen.value

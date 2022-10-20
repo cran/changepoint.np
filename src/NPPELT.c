@@ -15,8 +15,7 @@
 static int *checklist;
 static double *tmplike;
 
-void FreePELT(error)
-  int *error; /* Error code from PELT C function, non-zero => error */
+void FreePELT(int* error)
   {
     if(*error==0){
       free((void *)checklist);
@@ -24,23 +23,34 @@ void FreePELT(error)
     }
   }
 
-  void PELT(cost_func, sumstat,n,pen,cptsout,error,minseglen,nquantiles, lastchangelike, lastchangecpts, numchangecpts)
+  void PELT(char** cost_func,
+	    double* sumstat,
+	    int* n,
+	    double* pen,
+	    int* cptsout,
+	    int* error,
+	    int* minseglen,
+	    int* nquantiles,
+	    double* lastchangelike,
+	    int* lastchangecpts,
+	    int* numchangecpts)
+  /*  
   char **cost_func;
-  double *sumstat;    /* Summary statistic for the time series */
-  int *n;			/* Length of the time series */
-  double *pen;  /* Penalty used to decide if a changepoint is significant */
-  int *cptsout;    /* Vector of identified changepoint locations */
-  int *error;   /* 0 by default, nonzero indicates error in code */
-  int *minseglen; //minimum segment length
-  int *nquantiles; //number of quantiles in the empirical distribution approximation (K in EDPELT)
+  double *sumstat;        // Summary statistic for the time series 
+  int *n;		  // Length of the time series 
+  double *pen;            // Penalty used to decide if a changepoint is significant 
+  int *cptsout;           // Vector of identified changepoint locations 
+  int *error;             // 0 by default, nonzero indicates error in code 
+  int *minseglen;         // minimum segment length
+  int *nquantiles;        // number of quantiles in the empirical distribution approximation (K in EDPELT)
   double *lastchangelike; // stores likelihood up to that time using optimal changepoint locations up to that time
-  int *lastchangecpts; // stores last changepoint locations
-  int *numchangecpts; //stores the current number of changepoints
-  {
-
-    double (*costfunction)();
-    double mll_nonparametric_ed();
-    double mll_nonparametric_ed_mbic();
+  int *lastchangecpts;    // stores last changepoint locations
+  int *numchangecpts;     // stores the current number of changepoints
+  */
+  {    
+    double (*costfunction)(double*,int,int,int*,int*);
+    double mll_nonparametric_ed(double*,int,int,int*,int*);
+    double mll_nonparametric_ed_mbic(double*,int,int,int*,int*);
 
     if (strcmp(*cost_func,"nonparametric.ed")==0){
       costfunction = &mll_nonparametric_ed;
@@ -68,8 +78,7 @@ void FreePELT(error)
 
     int tstar,i,whichout,nchecktmp;
 
-
-    void min_which();
+  void min_which(double*,int,double*,int*);
 
     lastchangelike[0]= -*pen;
     lastchangecpts[0]=0;
